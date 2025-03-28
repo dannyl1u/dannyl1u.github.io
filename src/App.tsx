@@ -1,10 +1,12 @@
 import './App.css'
+import Liudogg from './components/Header'
 
 function App() {
 
   return (
     <>
       <div>
+        <Liudogg/>
         <pre>
           <code>{`
 ********+++++++===============----------------------=----=========++*#*+======++++++++++++++++++++**

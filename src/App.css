@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -37,6 +39,32 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.code-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+pre {
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 20px 0;
+}
+
+pre code {
+  color: white;
+  font-size: clamp(8px, 1.5vw, 16px);
+  white-space: pre;
+  word-break: normal;
+  overflow-x: auto;
+  display: block;
 }
