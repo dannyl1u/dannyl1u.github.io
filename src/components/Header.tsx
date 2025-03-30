@@ -4,7 +4,7 @@ export default function Liudogg() {
   return (
     <div>
         <h1>
-            Danny Liu
+            Hi, I'm Danny
         </h1>
     </div>
   )
