@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import AsciiSpinner from "./AsciiSpinner";
 
-const WeatherReport = () => {
-  const [weatherData, setWeatherData] = useState(null);
-  const [precipitationData, setPrecipitationData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const WeatherReport: React.FC = () => {
+  const [weatherData, setWeatherData] = useState<string | null>(null);
+  const [precipitationData, setPrecipitationData] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -15,13 +16,13 @@ const WeatherReport = () => {
         if (!weatherResponse.ok || !precipitationResponse.ok) {
           throw new Error("Failed to fetch weather data");
         }
-        
+
         const weatherText = await weatherResponse.text();
         const precipitationText = await precipitationResponse.text();
-        
+
         setWeatherData(weatherText);
         setPrecipitationData(precipitationText);
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
@@ -31,7 +32,7 @@ const WeatherReport = () => {
     fetchWeather();
   }, []);
 
-  const getWeatherIcon = (condition) => {
+  const getWeatherIcon = (condition: string): string => {
     if (condition.includes("Sunny")) return "☀️";
     if (condition.includes("Cloudy")) return "☁️";
     if (condition.includes("Rain")) return "🌧️";
@@ -41,20 +42,20 @@ const WeatherReport = () => {
   };
 
   return (
-    <div className="p-4 bg-blue-50 rounded-lg shadow-md w-96 text-center">
-      <h3 className="text-xl font-bold"> Currently in Redmond, WA 🌲</h3>
-      {loading && <p>Loading...</p>}
+    <div className="p-4 bg-blue-50 rounded-lg shadow-md w-96 text-center font-mono">
+      <p className="text-xl">Redmond, Washington</p>
+      {loading && <AsciiSpinner />}
       {error && <p className="text-red-500">No weather data available</p>}
       {weatherData && (
         <div className="mt-2 text-lg">
-          <p className="text-3xl">{getWeatherIcon(weatherData)}</p>
-          <p>{weatherData}</p>
+          <p className="text-3xl">{getWeatherIcon(weatherData)} {weatherData}</p>
         </div>
       )}
-      {precipitationData && (
+      {/* {precipitationData && (
         <div className="mt-4 p-2 bg-white rounded-md shadow-sm">
+          <p>Precipitation: {precipitationData}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

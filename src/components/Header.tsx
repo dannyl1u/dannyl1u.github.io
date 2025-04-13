@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Liudogg() {
+export default function Header() {
   return (
     <div>
         <h1>
-            Hi, I'm Danny
+            Danny Liu
         </h1>
     </div>
   )
