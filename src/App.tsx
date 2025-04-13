@@ -10,6 +10,16 @@ function App() {
     <>
       <div>
         <Liudogg />
+        <video
+        className="full-width-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/flying-squirrel-crop.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
         <Weather />
         <Doggo />
       </div>
